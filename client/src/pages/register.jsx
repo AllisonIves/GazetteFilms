@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Auth.css';
 
 const Register = () => {
@@ -9,15 +10,31 @@ const Register = () => {
     confirmPassword: '',
   });
   const [error, setError] = useState('');
+  const navigate = useNavigate();
+  const apiUrl = import.meta.env.VITE_API_URL || '/api';
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
-  };
+  }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your registration logic here
+    try {
+        const response = await fetch(`${apiUrl}/users/register`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(form)
+        });
+        if(!response.ok) {
+            throw new Error('Registration failed');
+        }
+        navigate('/login');
+    } catch (error) {
+        setError(error.message);
+    }
   };
 
   return (
@@ -53,17 +70,6 @@ const Register = () => {
             id="password"
             name="password"
             value={form.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="confirmPassword">Confirm Password</label>
-          <input
-            type="password"
-            id="confirmPassword"
-            name="confirmPassword"
-            value={form.confirmPassword}
             onChange={handleChange}
             required
           />
