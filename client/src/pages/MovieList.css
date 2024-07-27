@@ -2,27 +2,45 @@
 
 /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lobster&family=Open+Sans:wght@400;700&display=swap');
+.App {
+  display: flex;
+  flex-direction: column;
+  padding-top:3rem;
+  flex: 1;
+  margin-top: 3rem;
+}
+
+.navbar {
+  background-color: #f8f9fa; /* Example background color */
+  position: fixed;
+  justify-content: center;
+  flex: 0;
+}
+.nav-item {
+  padding-left:1em;
+  padding-right: 1em;
+}
+
 
 body {
   font-family: 'Open Sans', sans-serif;
   background-color: #f0f2f5;
-  margin: 0;
-  padding: 0;
 }
 
 .container {
   max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
+  max-height: calc(100vh - 56px - 56px);
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  flex: 1; /* Allow it to grow and fill available space */
+  
 }
+
 
 .title-card {
   max-width: 800px;
   margin: 20px auto;
-  padding: 20px;
   background-color: #00274D;  /* Dark blue background for title card */
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -38,7 +56,6 @@ body {
 .movie-list {
   list-style: none;
   padding: 0;
-  margin-bottom: 30px;
 }
 
 .movie-item {
@@ -108,8 +125,6 @@ body {
 }
 
 .form-container {
-  margin-top: 30px;
-  padding: 20px;
   background-color: #B0C4DE;  /* Light blue background for form container */
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -189,7 +204,7 @@ body {
 
 .star-rating label {
   font-size: 2rem;
-  color: #ffb400;
+  color: #ffd97f;
   cursor: pointer;
   transition: color 0.2s ease;
 }
@@ -200,5 +215,5 @@ body {
 
 .star-rating input[type="radio"]:not(:checked) ~ label:hover,
 .star-rating input[type="radio"]:not(:checked) ~ label:hover ~ label {
-  color: #ffb400;
+  color: #ffd166;
 }

@@ -4,7 +4,7 @@ import Home from './pages/home';
 import Register from './pages/register';
 import Login from './pages/login';
 import MovieList from './pages/MovieList';
-import NavBar from './components/NavBar';  // Correctly import the path by modifying it.
+import NavBar from './components/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -31,8 +31,8 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <NavBar user={user} handleLogout={handleLogout} /> {/* Add Navigation Bar */}
-        <div className="container mt-4 text-center">
+        <NavBar user={user} handleLogout={handleLogout} />
+        <div className="mainNav">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/register" element={<Register />} />
@@ -40,7 +40,7 @@ function App() {
             <Route path="/movie-list" element={<MovieList />} />
           </Routes>
         </div>
-        <nav className="navbar fixed-bottom navbar-light bg-light">
+        <nav className="navbar">
           <div className="container">
             <span className="navbar-text mx-auto">
               &copy; 2024 Gazette Computing Co.
