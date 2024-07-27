@@ -1,0 +1,218 @@
+/* MovieList.css */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lobster&family=Open+Sans:wght@400;700&display=swap');
+
+.App {
+  display: flex;
+  flex-direction: column;
+  padding-top: 3rem;
+  flex: 1;
+  margin-top: 3rem;
+}
+
+.navbar {
+  background-color: #f8f9fa;
+  position: fixed;
+  justify-content: center;
+  flex: 0;
+}
+
+.nav-item {
+  padding-left: 1em;
+  padding-right: 1em;
+  color: #333;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f0f2f5;
+}
+
+.container {
+  max-width: 800px;
+  max-height: calc(100vh - 56px - 56px);
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  flex: 1; /* Allow it to grow and fill available space */
+}
+
+.title-card {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #00274D; /* Dark blue background for title card */
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #fff;
+  font-family: 'Lobster', cursive;
+}
+
+.movie-list {
+  list-style: none;
+  padding: 0;
+}
+
+.movie-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #005385; /* Medium blue background for movie items */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.movie-item:hover {
+  transform: scale(1.02);
+}
+
+.movie-details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.movie-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #FFD700; /* Gold color for movie name */
+}
+
+.movie-year, .movie-genre, .movie-stars {
+  font-size: 1rem;
+  color: #fff;
+}
+
+.movie-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.edit-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.edit-btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
+.form-container {
+  background-color: #B0C4DE; /* Light blue background for form container */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.film-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.film-form .form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.film-form .form-row > div {
+  flex: 1;
+}
+
+.film-form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.film-form input, .film-form select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.film-form button {
+  margin-top: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: fit-content; /* Ensures button width fits its content */
+  align-self: center; /* Centers the button horizontally */
+}
+
+.film-form button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.error {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.no-films {
+  text-align: center;
+  color: #888;
+  margin-top: 20px;
+}
+
+.star-rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  gap: 5px;
+}
+
+.star-rating input[type="radio"] {
+  display: none;
+}
+
+.star-rating label {
+  font-size: 2rem;
+  color: #ffd97f;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.star-rating input[type="radio"]:checked ~ label {
+  color: #ffb400;
+}
+
+.star-rating input[type="radio"]:not(:checked) ~ label:hover,
+.star-rating input[type="radio"]:not(:checked) ~ label:hover ~ label {
+  color: #ffd166;
+}

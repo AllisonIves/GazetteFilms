@@ -1,29 +1,26 @@
 import React, { useEffect, useState } from 'react';
+import './MovieList.css';
 
 const MovieList = () => {
   const [films, setFilms] = useState([]);
   const [error, setError] = useState(null);
-  const [editingFilm, setEditingFilm] = useState(null); //state for editing
-  //const form for update film
+  const [editingFilm, setEditingFilm] = useState(null);
   const [editForm, setEditForm] = useState({
     name: '',
     released: '',
     genre: '',
     stars: '',
   });
-  //const for form for add film
   const [addForm, setAddForm] = useState({
     name: '',
     released: '',
     genre: '',
     stars: '',
   });
-  
-  //declare consts for apiUrl from dot env and token from local storage
+
   const apiUrl = import.meta.env.VITE_API_URL || '/';
   const token = localStorage.getItem('token');
 
-  //useEffect to get user's films
   useEffect(() => {
     const fetchFilms = async () => {
       try {
@@ -31,7 +28,7 @@ const MovieList = () => {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`, //authorization requires Bearer then token
+            'Authorization': `Bearer ${token}`,
           },
         });
 
@@ -50,7 +47,6 @@ const MovieList = () => {
     fetchFilms();
   }, [apiUrl, token]);
 
-  //delete film by id, to be called by button next to any film in list
   const deleteFilm = async (id) => {
     try {
       const response = await fetch(`${apiUrl}/films/${id}`, {
@@ -87,8 +83,9 @@ const MovieList = () => {
         throw new Error('Update movie failed');
       }
 
-      setFilms(films.map(film => (film._id === id ? { ...film, ...editForm } : film)));
-      setEditingFilm(null); //remove film set for edit once edited
+      const updatedFilm = await response.json();
+      setFilms(films.map(film => film._id === id ? { ...film, ...editForm } : film));
+      setEditingFilm(null);
     } catch (error) {
       setError(error.message);
       console.error('Update error:', error);
@@ -141,7 +138,6 @@ const MovieList = () => {
         throw new Error('Add movie failed');
       }
 
-      //add the new film to local state
       const newFilm = await response.json();
       setFilms([...films, newFilm]);
       setAddForm({
@@ -152,97 +148,130 @@ const MovieList = () => {
       });
     } catch (error) {
       setError(error.message);
+      console.error('Add error:', error);
     }
   };
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div className="error">Error: {error}</div>;
   }
 
   return (
-    <div>
-      <h1>Movie List</h1>
-      {films.length > 0 ? (
-        <ul>
-          {films.map((film) => (
-            <li key={film._id}>
-              {film.name} - {film.released} - {film.genre} - {film.stars}
-              <button onClick={() => deleteFilm(film._id)}>Delete</button>
-              <button onClick={() => handleEditClick(film)}>Edit</button>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <div>No films found</div> //display if films has no items
-      )}
+    <div className="App">
+      <div className="container">
+        <div className="title-card">
+          <h1 className="title">My Films</h1>
+        </div>
+        <div className="container">
+          {films.length > 0 ? (
+            <ul className="movie-list">
+              {films.map((film) => (
+                <li key={film._id} className="movie-item">
+                  <div className="movie-details">
+                    <span className="movie-name">{film.name}</span>
+                    <span className="movie-year">Year: {film.released}</span>
+                    <span className="movie-genre">Genre: {film.genre}</span>
+                    <span className="movie-stars">Rating: {film.stars}</span>
+                  </div>
+                  <div className="movie-actions">
+                    <button onClick={() => deleteFilm(film._id)} className="btn delete-btn">Delete</button>
+                    <button onClick={() => handleEditClick(film)} className="btn edit-btn">Edit</button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <div className="no-films">No films found</div>
+          )}
+        </div>
 
-      {editingFilm && ( //form for editing film to only show when button is clicked until it is saved
-        <div>
-          <h2>Edit Film</h2>
-          <form onSubmit={handleEditSubmit}>
-            <div>
-              <label>Name:</label>
-              <input type="text" name="name" value={editForm.name} onChange={handleEditChange} />
+        {editingFilm && (
+          <div className="form-container">
+            <h2>Edit Film</h2>
+            <form onSubmit={handleEditSubmit} className="film-form">
+              <div className="form-row">
+                <div>
+                  <label>Name:</label>
+                  <input type="text" name="name" value={editForm.name} onChange={handleEditChange} />
+                </div>
+                <div>
+                  <label>Year Released:</label>
+                  <input type="text" name="released" value={editForm.released} onChange={handleEditChange} />
+                </div>
+              </div>
+              <div className="form-row">
+                <div>
+                  <label>Genre:</label>
+                  <select name="genre" value={editForm.genre} onChange={handleEditChange}>
+                    <option value="Action">Action</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Sci-Fi">Sci-Fi</option>
+                    <option value="Thriller">Thriller</option>
+                    <option value="Documentary">Documentary</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Rating (out of 5 stars):</label>
+                  <div className="star-rating">
+                    {[5, 4, 3, 2, 1].map(value => (
+                      <React.Fragment key={value}>
+                        <input type="radio" id={`edit-${value}-stars`} name="stars" value={value} checked={editForm.stars === value} onChange={handleEditChange} />
+                        <label htmlFor={`edit-${value}-stars`} className="star">&#9733;</label>
+                      </React.Fragment>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <button type="submit" className="btn">Update</button>
+            </form>
+          </div>
+        )}
+
+        <div className="form-container">
+          <h2>Add Movie</h2>
+          <form onSubmit={handleAddSubmit} className="film-form">
+            <div className="form-row">
+              <div>
+                <label>Title:</label>
+                <input type="text" name="name" value={addForm.name} onChange={handleAddChange} />
+              </div>
+              <div>
+                <label>Year Released:</label>
+                <input type="text" name="released" value={addForm.released} onChange={handleAddChange} />
+              </div>
             </div>
-            <div>
-              <label>Year Released:</label>
-              <input type="text" name="released" value={editForm.released} onChange={handleEditChange} />
+            <div className="form-row">
+              <div>
+                <label>Genre:</label>
+                <select name="genre" value={addForm.genre} onChange={handleAddChange}>
+                  <option value="Action">Action</option>
+                  <option value="Comedy">Comedy</option>
+                  <option value="Drama">Drama</option>
+                  <option value="Horror">Horror</option>
+                  <option value="Romance">Romance</option>
+                  <option value="Sci-Fi">Sci-Fi</option>
+                  <option value="Thriller">Thriller</option>
+                  <option value="Documentary">Documentary</option>
+                </select>
+              </div>
+              <div>
+                <label>Rating (out of 5 stars):</label>
+                <div className="star-rating">
+                  {[5, 4, 3, 2, 1].map(value => (
+                    <React.Fragment key={value}>
+                      <input type="radio" id={`add-${value}-stars`} name="stars" value={value} checked={addForm.stars === value} onChange={handleAddChange} />
+                      <label htmlFor={`add-${value}-stars`} className="star">&#9733;</label>
+                    </React.Fragment>
+                  ))}
+                </div>
+              </div>
             </div>
-            <div>
-              <label>Genre:</label>
-              <input type="text" name="genre" value={editForm.genre} onChange={handleEditChange} />
-            </div>
-            <div>
-              <label>Star Rating:</label>
-              <input type="text" name="stars" value={editForm.stars} onChange={handleEditChange} />
-            </div>
-            <button type="submit">Update</button>
+            <button type="submit" className="btn">Add</button>
           </form>
         </div>
-      )}
-
-      <div>
-        <h2>Add Movie</h2>
-        <form onSubmit={handleAddSubmit}>
-          <div>
-            <label>Title:</label>
-            <input
-              type="text"
-              name="name"
-              value={addForm.name}
-              onChange={handleAddChange}
-            />
-          </div>
-          <div>
-            <label>Year Released:</label>
-            <input
-              type="text"
-              name="released"
-              value={addForm.released}
-              onChange={handleAddChange}
-            />
-          </div>
-          <div>
-            <label>Genre:</label>
-            <input
-              type="text"
-              name="genre"
-              value={addForm.genre}
-              onChange={handleAddChange}
-            />
-          </div>
-          <div>
-            <label>Rating (out of 5 stars):</label>
-            <input
-              type="text"
-              name="stars"
-              value={addForm.stars}
-              onChange={handleAddChange}
-            />
-          </div>
-          <button type="submit">Add</button>
-        </form>
-        {error && <p>{error}</p>}
       </div>
     </div>
   );
