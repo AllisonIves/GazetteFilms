@@ -53,7 +53,11 @@ const Home = () => {
             <p className="movie-stars">Rating: {highestRatedFilm.stars} stars</p>
           </div>
         ) : (
+<<<<<<< Updated upstream
           <p>No films available...</p>
+=======
+          <p className="movie-stars">Start curating your list today to see your top film here.</p>
+>>>>>>> Stashed changes
         )}
       </div>
       </div>

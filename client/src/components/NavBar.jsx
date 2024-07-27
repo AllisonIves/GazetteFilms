@@ -19,6 +19,9 @@ function NavBar({ user, handleLogout }) {
                 <Link className="nav-link" to="/movie-list">My Films</Link>
               </li>
               <li className="nav-item">
+                <Link className="nav-link" to="/users">Users</Link>
+              </li>
+              <li className="nav-item">
                 <span className="navbar-text">Welcome, {user.username}</span>
               </li>
               <li className="nav-item">

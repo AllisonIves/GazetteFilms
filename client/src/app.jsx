@@ -4,6 +4,7 @@ import Home from './pages/home';
 import Register from './pages/register';
 import Login from './pages/login';
 import MovieList from './pages/myFilms';
+import UserList from './pages/users';
 import NavBar from './components/NavBar';
 import logo from './images/logo.png'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -39,6 +40,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login setUser={setUser} />} />
             <Route path="/movie-list" element={<MovieList />} />
+            <Route path="/users" element={<UserList />} />
           </Routes>
         </div>
         <nav className="navbar">
