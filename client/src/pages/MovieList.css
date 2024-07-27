@@ -15,11 +15,10 @@
   width:120vh;
 }
 .navbar {
-  background-color: #f8f9fa;
   position: fixed;
   width:100%;
   justify-content: center;
-  margin-top: 1em;;
+  margin-top: 1em;
 }
 .nav-item {
   padding-left:2em;
@@ -31,6 +30,8 @@ nav {
   width: 100%;
   justify-content: center;
   align-content: justify;
+  position: fixed;
+  top:80px;
 }
 
 .nav-item button{
@@ -50,6 +51,7 @@ body {
 
 .container {
   max-width: 800px;
+  max-height: calc(100vh - 56px - 56px);
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -59,11 +61,12 @@ body {
 
 .title-card {
   max-width: 800px;
-  margin: 20px auto;
+  margin-top: 90px;
   background-color: #00274D;  /* Dark blue background for title card */
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
+  position:relative;
 }
 
 .title {
@@ -246,4 +249,17 @@ body {
 .star-rating input[type="radio"]:not(:checked) ~ label:hover,
 .star-rating input[type="radio"]:not(:checked) ~ label:hover ~ label {
   color: #ffd166;
+}
+
+.footer{
+  width: 100%;
+  display:flex;
+  flex-direction: column;
+  background-color: #473e2a;
+  text-decoration: #B0C4DE;
+}
+img {
+  width: 110px;
+  height: auto;
+  margin: auto;
 }

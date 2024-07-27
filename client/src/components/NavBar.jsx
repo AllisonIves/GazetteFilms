@@ -1,12 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import 'client/src/pages/MovieList.css';
+
 
 function NavBar({ user, handleLogout }) {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <Link className="navbar-brand" to="/">Gazette Films</Link>
       <div className="collapse navbar-collapse">
+        <ul className="navbar-nav mr-auto">
+          <li className="nav-item">
+            <Link className="nav-link" to="/">Home</Link>
+          </li>
+        </ul>
         <ul className="navbar-nav ml-auto">
           {user ? (
             <>

@@ -5,6 +5,7 @@ import Register from './pages/register';
 import Login from './pages/login';
 import MovieList from './pages/myFilms';
 import NavBar from './components/NavBar';
+import logo from './images/logo.png'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -41,11 +42,12 @@ function App() {
           </Routes>
         </div>
         <nav className="navbar">
-          <div className="container">
+          <div className="footer">
+            <img id="logo" src={logo}></img>
+            </div>
             <span className="navbar-text mx-auto">
               &copy; 2024 Gazette Computing Co.
-            </span>
-          </div>
+            </span>    
         </nav>
       </div>
     </Router>
