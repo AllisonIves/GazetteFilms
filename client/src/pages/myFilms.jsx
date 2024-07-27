@@ -5,22 +5,24 @@ const MovieList = () => {
   const [films, setFilms] = useState([]);
   const [error, setError] = useState(null);
   const [editingFilm, setEditingFilm] = useState(null); // state for editing
+  //const form for update film
   const [editForm, setEditForm] = useState({
     name: '',
     released: '',
     genre: '',
     stars: '',
   });
+  //const for form for add film
   const [addForm, setAddForm] = useState({
     name: '',
     released: '',
     genre: '',
     stars: '',
   });
-
+//declare consts for apiUrl from dot env and token from local storage
   const apiUrl = import.meta.env.VITE_API_URL || '/';
   const token = localStorage.getItem('token');
-
+//useEffect to get user's films
   useEffect(() => {
     const fetchFilms = async () => {
       try {
@@ -147,12 +149,10 @@ const MovieList = () => {
       });
     } catch (error) {
       setError(error.message);
+      console.error('Add error:', error);
+      return <div>Error: {error}</div>;
     }
   };
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
 
   return (
     <div>
