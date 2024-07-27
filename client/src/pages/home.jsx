@@ -41,16 +41,16 @@ const Home = () => {
   }, [apiUrl, token]);
 
   return (
-    <div>
-      <h1>Welcome to GazetteFilms</h1>
-      <p>Please navigate to My Films to find your full movie list!</p>
+    <div className="homePage">
+      <h1 id="welcomeHeader">Welcome to GazetteFilms</h1>
+      <p id="introPara">Please navigate to My Films to find your full movie list!</p>
       <hr></hr>
       <h4>My top rated film:</h4>
-      <div>
+      <div id="topFilm">
         {highestRatedFilm ? (
-          <div>
-            <p>Name: {highestRatedFilm.name}</p>
-            <p>Rating: {highestRatedFilm.stars}</p>
+          <div className="movie-details">
+            <p className="movie-name">Name: {highestRatedFilm.name}</p>
+            <p className="movie-stars">Rating: {highestRatedFilm.stars} stars</p>
           </div>
         ) : (
           <p>No films available...</p>

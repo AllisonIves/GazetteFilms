@@ -183,7 +183,7 @@ const MovieList = () => {
 
         {editingFilm && (
           <div className="form-container">
-            <h2>Edit Film</h2>
+            <h4>Edit Film</h4>
             <form onSubmit={handleEditSubmit} className="film-form">
               <div className="form-row">
                 <div>
@@ -231,7 +231,7 @@ const MovieList = () => {
         )}
 
         <div className="form-container">
-          <h2 className="form-title">Add Movie</h2>
+          <h4 className="form-title">Add Movie</h4>
           <form onSubmit={handleAddSubmit} className="film-form">
             <div className="form-row">
               <div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import 'client/src/pages/MovieList.css';
 
 function NavBar({ user, handleLogout }) {
   return (
