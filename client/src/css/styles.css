@@ -13,11 +13,11 @@
 
 .App {
   display: flex;
+  width: 100vh;
   flex-direction: column;
-  padding-top:3rem;
   flex: 1;
-  margin-top: 3rem;
   color: var(--text-colour);
+
 }
 
 body {
@@ -25,6 +25,7 @@ body {
   background-color:var(--background-colour);
   color: var(--text-colour);
   min-height:100%;
+  overflow-y: scroll;
 }
 
 /* NavBar and footer styles */
@@ -33,12 +34,33 @@ nav {
   justify-content: center;
   align-content: justify;
   position: fixed;
-  top:80px;
+}
+.navDiv nav{
+  padding-left:2rem;
 }
 
-.nav-item {
-  padding-left:2em;
-  padding-right: 2em;
+.footer nav{
+  height: fit-content;
+  background-color: var(--secondary-colour);
+  display: flex;
+  font-size: small;
+  bottom: 0;
+}
+.inner-footer{
+  width: fit-content;
+  height:fit-content;
+  margin: auto;
+  align-items: center;
+}
+.footer{
+  position:fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+}
+.navDiv .nav-item {
+  padding-left:1.5em;
+  padding-right: 1.5em;
   align-content: center;
   position: relative;
 }
@@ -56,15 +78,6 @@ nav {
   background-color:var(--accent-colour);
   color:var(--background-colour);
 }
-.footer{
-  width: 100%;
-  display:flex;
-  flex-direction: column;
-  background-color:var(--secondary-colour);
-  text-decoration: var(--pale-accent);
-  justify-content: center;
-  align-content: justify;
-}
 
 .footer span{
   padding-top:0px;
@@ -72,18 +85,13 @@ nav {
 }
 
 img {
-  width: 110px;
+  width: 80px;
   height: auto;
   margin: auto;
 }
 
 
 /* Homepage styles */
-
-.homePage{
-  padding: 20px;
-  margin: 2rem auto;
-}
 
 .home-container h1 {
   font-size: 2.5rem;
@@ -106,24 +114,18 @@ img {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 #welcomeHeader{
-  padding-top: 1rem;
   padding-bottom: 1rem;
-  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
 /*My Films styles*/
 .film-list-container{ 
-  max-width: 800px;
-  max-height: 100%;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   flex: 1;
-  margin: auto;
 }
 
 .films-title-card {
-  margin-top: 90px;
   background-color: var(--secondary-colour);
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -141,13 +143,22 @@ img {
   list-style: none;
   padding: 0;
 }
+.film-scrollable{
+  max-height: 233px;
+  overflow-y: scroll;
+  overflow-x: visible;
+}
 
 .film-item {
+  width:98%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 6px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
   background-color: var(--primary-colour);  
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -161,7 +172,7 @@ img {
 .film-details {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 2px;
 }
 
 .film-name {
@@ -210,6 +221,21 @@ img {
   color: #ffd166;
 }
 
+/* Add film styles */
+.add-container {
+  background-color:var(--pale-accent);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+/* Edit film styles */
+
+.edit-container {
+  background-color:var(--primary-colour);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  color: #fff;
+}
+
 .form-btn {
   padding: 8px 12px;
   margin-bottom:8px;
@@ -219,29 +245,25 @@ img {
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.form-container {
-  background-color:var(--pale-accent);
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.form-container h4{
-  padding: 15px;
+.edit-container, .add-container h4{
+  padding-left: 15px;
+  padding-top: 2px;
 }
 
 .film-form {
   display: flex;
+  height: max-content;
   padding-left: 15px;
   padding-right: 15px;
   flex-direction: column;
-  gap: 10px;
-  
+  gap: 6px;
+  margin-bottom:1rem;
 }
 
 .film-form .form-row {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  gap: 6px;
 }
 
 .film-form .form-row > div {
@@ -264,8 +286,8 @@ img {
 }
 
 .film-form button {
-  margin-top: 10px;
-  background-color:var(--primary-colour);
+  margin: 10px, auto;
+  background-color:var(--secondary-colour);
   color: #fff;
   border: none;
   padding: 10px 15px;
@@ -277,7 +299,7 @@ img {
 }
 
 .film-form button:hover {
-  background-color: var(--primary-colour);
+  background-color: var(--accent-colour);
   color:var(--background-colour);
   transform: scale(1.05);
 }
@@ -296,7 +318,6 @@ img {
 
 /* Users page styling */
 .users-container{ 
-  max-height: 90vh;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   flex: 1;
@@ -305,7 +326,6 @@ img {
 }
 
 .users-title-card {
-  margin-top: 90px;
   background-color: var(--secondary-colour);
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -318,4 +338,14 @@ img {
   color: var(--background-colour);
   font-family: 'Lobster', cursive;
 }
-
+.user-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: var(--primary-colour);  
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}

@@ -46,11 +46,14 @@ function App() {
           </Routes>
         </div>
           <div className="footer">
+          <nav className="navbar navbar-inverse navbar-fixed-bottom">
+            <div className="inner-footer">
             <img id="logo" src={logo}></img>
-            
             <span className="navbar-text mx-auto">
-              &copy; 2024 Gazette Computing Co.
-            </span>    
+              &copy; 2024
+            </span>
+            </div>    
+            </nav>
             </div>
       </div>
     </Router>

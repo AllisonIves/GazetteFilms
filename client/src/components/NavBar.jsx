@@ -3,7 +3,8 @@ import { NavLink } from 'react-router-dom';
 
 function NavBar({ user, handleLogout }) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <div className="navDiv">
+    <nav className="navbar navbar-expand-lg navbar-light fixed-top">
       <NavLink className="navbar-brand" to="/" exact>
         Gazette Films
       </NavLink>
@@ -73,6 +74,7 @@ function NavBar({ user, handleLogout }) {
         </ul>
       </div>
     </nav>
+    </div>
   );
 }
 export default NavBar;

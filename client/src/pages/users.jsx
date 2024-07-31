@@ -46,7 +46,7 @@ const UserList = () => {
       {users.length > 0 ? (
         <ul className="user-list">
           {users.map((user) => (
-            <li key={user._id} className="film-item">
+            <li key={user._id} className="user-item">
               <div className="film-details">
               <span className="film-name">{user.username}</span>
               <span className="film-count">Films: {user.filmCount}</span>

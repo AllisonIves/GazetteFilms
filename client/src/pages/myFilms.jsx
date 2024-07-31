@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import '../css/styles.css';
 
+
 const MovieList = () => {
   const [films, setFilms] = useState([]);
   const [error, setError] = useState(null);
   const [editingFilm, setEditingFilm] = useState(null); // state for editing
+  const [showAddContainer, setShowAddContainer] = useState(true); //state for visibility of add-container
   //const form for update film
   const [editForm, setEditForm] = useState({
     name: '',
@@ -19,6 +21,7 @@ const MovieList = () => {
     genre: '',
     stars: '',
   });
+
 //declare consts for apiUrl from dot env and token from local storage
   const apiUrl = import.meta.env.VITE_API_URL || '/';
   const token = localStorage.getItem('token');
@@ -101,7 +104,7 @@ const MovieList = () => {
       genre: film.genre || '',
       stars: film.stars || '',
     });
-    //add logic to prevent weird footer issue?
+    setShowAddContainer(false);
   };
 
   const handleEditChange = (e) => {
@@ -114,6 +117,7 @@ const MovieList = () => {
     if (editingFilm) {
       updateFilm(editingFilm._id);
     }
+    setShowAddContainer(true);
   };
 
   const handleAddChange = (e) => {
@@ -125,7 +129,6 @@ const MovieList = () => {
     e.preventDefault();
     const username = localStorage.getItem('username');
     const filmData = { ...addForm, user: username };
-
     try {
       const response = await fetch(`${apiUrl}/films/`, {
         method: 'POST',
@@ -161,6 +164,7 @@ const MovieList = () => {
         <h1 className="films-title">My Films</h1>
       </div>
       <div className="film-list-container">
+        <div className="film-scrollable">
         {films.length > 0 ? (
           <ul className="film-list">
             {films.map((film) => (
@@ -181,9 +185,10 @@ const MovieList = () => {
         ) : (
           <div className="no-films">No films found</div>
         )}
+        </div>
 
         {editingFilm && (
-          <div className="form-container">
+          <div className="edit-container">
             <h4>Edit Film</h4>
             <form onSubmit={handleEditSubmit} className="film-form">
               <div className="form-row">
@@ -230,8 +235,8 @@ const MovieList = () => {
             </form>
           </div>
         )}
-
-        <div className="form-container">
+      {showAddContainer && (
+        <div className="add-container">
           <h4 className="form-title">Add Movie</h4>
           <form onSubmit={handleAddSubmit} className="film-form">
             <div className="form-row">
@@ -267,7 +272,7 @@ const MovieList = () => {
             </div>
             <button type="submit" className="form-btn">Add</button>
           </form>
-        </div>
+        </div>)}
       </div>
     </div>
   );
