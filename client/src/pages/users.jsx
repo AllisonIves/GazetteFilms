@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './Auth.css';
+import '../css/Auth.css';
 
 const UserList = () => {
     const [users, setUsers] = useState([]);
@@ -35,14 +35,18 @@ const UserList = () => {
   }, [apiUrl]);
 
   return (
-    <div className="auth-container">
-      {error && <div className="error">{error}</div>} {/* Display error if any */}
+    <div>
+    <div className="users-title-card">
+      <h1 className="users-title">Leaderboard</h1>
+    </div>
+    <div className="users-container">
+      {error && <div className="error">{error}</div>}
       {users.length > 0 ? (
         <ul className="user-list">
           {users.map((user) => (
-            <li key={user._id} className="movie-item">
-              <div className="movie-details">
-                <span className="movie-name">{user.username}</span>
+            <li key={user._id} className="film-item">
+              <div className="film-details">
+                <span className="film-name">{user.username}</span>
               </div>
             </li>
           ))}
@@ -50,6 +54,7 @@ const UserList = () => {
       ) : (
         <div className="no-films">No users found</div>
       )}
+    </div>
     </div>
   );
 };

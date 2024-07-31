@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './MovieList.css';
+import '../css/styles.css';
 
 const MovieList = () => {
   const [films, setFilms] = useState([]);
@@ -101,6 +101,7 @@ const MovieList = () => {
       genre: film.genre || '',
       stars: film.stars || '',
     });
+    //add logic to prevent weird footer issue?
   };
 
   const handleEditChange = (e) => {
@@ -156,21 +157,21 @@ const MovieList = () => {
 
   return (
     <div>
-      <div className="title-card">
-        <h1 className="title">My Films</h1>
+      <div className="films-title-card">
+        <h1 className="films-title">My Films</h1>
       </div>
-      <div className="container">
+      <div className="film-list-container">
         {films.length > 0 ? (
-          <ul className="movie-list">
+          <ul className="film-list">
             {films.map((film) => (
-              <li key={film._id} className="movie-item">
-                <div className="movie-details">
-                  <span className="movie-name">{film.name}</span>
-                  <span className="movie-year">Year: {film.released}</span>
-                  <span className="movie-genre">Genre: {film.genre}</span>
-                  <span className="movie-stars">Rating: {film.stars}</span>
+              <li key={film._id} className="film-item">
+                <div className="film-details">
+                  <span className="film-name">{film.name}</span>
+                  <span className="film-year">Year: {film.released}</span>
+                  <span className="film-genre">Genre: {film.genre}</span>
+                  <span className="film-stars">Rating: {film.stars}</span>
                 </div>
-                <div className="movie-actions">
+                <div className="film-actions">
                   <button onClick={() => deleteFilm(film._id)} className="btn delete-btn">Delete</button>
                   <button onClick={() => handleEditClick(film)} className="btn edit-btn">Edit</button>
                 </div>
@@ -225,7 +226,7 @@ const MovieList = () => {
                   </div>
                 </div>
               </div>
-              <button type="submit" className="btn">Update</button>
+              <button type="submit" className="form-btn">Update</button>
             </form>
           </div>
         )}
@@ -264,7 +265,7 @@ const MovieList = () => {
                 </div>
               </div>
             </div>
-            <button type="submit" className="btn">Add</button>
+            <button type="submit" className="form-btn">Add</button>
           </form>
         </div>
       </div>

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import '../css/styles.css';
+import '../css/Auth.css';
 
 const Home = () => {
   const [films, setFilms] = useState([]);
@@ -48,12 +50,12 @@ const Home = () => {
       <h4>My top rated film:</h4>
       <div id="topFilm">
         {highestRatedFilm ? (
-          <div className="movie-details">
-            <p className="movie-name">Name: {highestRatedFilm.name}</p>
-            <p className="movie-stars">Rating: {highestRatedFilm.stars} stars</p>
+          <div className="film-details">
+            <p className="film-name">Name: {highestRatedFilm.name}</p>
+            <p className="film-stars">Rating: {highestRatedFilm.stars} stars</p>
           </div>
         ) : (
-          <p className="movie-stars">Start curating your list today to see your top film here.</p>
+          <p>Start curating your list today to see your top film here.</p>
         )}
       </div>
       </div>

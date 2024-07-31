@@ -45,14 +45,13 @@ function App() {
             <Route path="/users" element={<UserList />} />
           </Routes>
         </div>
-        <nav className="navbar">
           <div className="footer">
             <img id="logo" src={logo}></img>
-            </div>
+            
             <span className="navbar-text mx-auto">
               &copy; 2024 Gazette Computing Co.
             </span>    
-        </nav>
+            </div>
       </div>
     </Router>
   );

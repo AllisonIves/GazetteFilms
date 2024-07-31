@@ -1,25 +1,45 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
+import { NavLink } from 'react-router-dom';
 
 function NavBar({ user, handleLogout }) {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <Link className="navbar-brand" to="/">Gazette Films</Link>
+      <NavLink className="navbar-brand" to="/" exact>
+        Gazette Films
+      </NavLink>
       <div className="collapse navbar-collapse">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item">
-            <Link className="nav-link" to="/">Home</Link>
+            <NavLink
+              className="nav-link"
+              to="/"
+              end
+              activeClassName="active"
+            >
+              Home
+            </NavLink>
           </li>
         </ul>
         <ul className="navbar-nav ml-auto">
           {user ? (
             <>
               <li className="nav-item">
-                <Link className="nav-link" to="/movie-list">My Films</Link>
+                <NavLink
+                  className="nav-link"
+                  to="/movie-list"
+                  activeClassName="active"
+                >
+                  My Films
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/users">Users</Link>
+                <NavLink
+                  className="nav-link"
+                  to="/users"
+                  activeClassName="active"
+                >
+                  Users
+                </NavLink>
               </li>
               <li className="nav-item">
                 <span className="navbar-text">Welcome, {user.username}</span>
@@ -31,10 +51,22 @@ function NavBar({ user, handleLogout }) {
           ) : (
             <>
               <li className="nav-item">
-                <Link className="nav-link" to="/register">Register</Link>
+                <NavLink
+                  className="nav-link"
+                  to="/register"
+                  activeClassName="active"
+                >
+                  Register
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/login">Login</Link>
+                <NavLink
+                  className="nav-link"
+                  to="/login"
+                  activeClassName="active"
+                >
+                  Login
+                </NavLink>
               </li>
             </>
           )}
@@ -43,5 +75,4 @@ function NavBar({ user, handleLogout }) {
     </nav>
   );
 }
-
 export default NavBar;
