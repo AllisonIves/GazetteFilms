@@ -3,7 +3,7 @@ import '../css/Auth.css';
 
 const UserList = () => {
     const [users, setUsers] = useState([]);
-    const [error, setError] = useState(null); // Add state for error handling
+    const [error, setError] = useState(null);
 
 
 //declare consts for apiUrl from dot env and token from local storage
@@ -24,6 +24,8 @@ const UserList = () => {
         }
 
         const result = await response.json();
+
+        result.sort((a, b) => b.filmCount - a.filmCount);
         setUsers(result);
       } catch (error) {
         setError(error.message);
@@ -46,7 +48,8 @@ const UserList = () => {
           {users.map((user) => (
             <li key={user._id} className="film-item">
               <div className="film-details">
-                <span className="film-name">{user.username}</span>
+              <span className="film-name">{user.username}</span>
+              <span className="film-count">Films: {user.filmCount}</span>
               </div>
             </li>
           ))}

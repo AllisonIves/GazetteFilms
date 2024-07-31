@@ -170,7 +170,7 @@ img {
   color: var(--accent-colour);
 }
 
-.film-year, .film-genre, .film-stars {
+.film-year, .film-genre, .film-stars, .film-count {
   font-size: 1rem;
   color: #fff;
 }

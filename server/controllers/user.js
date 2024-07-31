@@ -6,7 +6,7 @@ exports.register = async(req, res) => {
 
     try {
         const { username, email, password } = req.body;
-        const user = new User({ username, email, password });
+        const user = new User({ username, email, password, filmCount:0 });
         await user.save();
 
         const token = generateToken(user);
