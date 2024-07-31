@@ -1,12 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import logo from '../images/FILMSLOGO.png'
 
 function NavBar({ user, handleLogout }) {
   return (
     <div className="navDiv">
-    <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+    <nav className="navbar navbar-expand-lg bg-light navbar-light fixed-top">
       <NavLink className="navbar-brand" to="/" exact>
-        Gazette Films
+      <img id="films-logo" src={logo}></img>
       </NavLink>
       <div className="collapse navbar-collapse">
         <ul className="navbar-nav mr-auto">
@@ -39,7 +40,7 @@ function NavBar({ user, handleLogout }) {
                   to="/users"
                   activeClassName="active"
                 >
-                  Users
+                  Leaderboard
                 </NavLink>
               </li>
               <li className="nav-item">

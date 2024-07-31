@@ -45,11 +45,14 @@ const UserList = () => {
       {error && <div className="error">{error}</div>}
       {users.length > 0 ? (
         <ul className="user-list">
-          {users.map((user) => (
+          {users.map((user, index) => (
             <li key={user._id} className="user-item">
-              <div className="film-details">
-              <span className="film-name">{user.username}</span>
-              <span className="film-count">Films: {user.filmCount}</span>
+              <div className="user-details">
+                <span className="user-rank">{index + 1}. </span>
+                <div className="user-details-name">
+                  <span className="film-name">{user.username}</span>
+                  <span className="film-count">Films: {user.filmCount}</span>
+                </div>
               </div>
             </li>
           ))}

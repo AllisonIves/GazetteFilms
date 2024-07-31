@@ -17,8 +17,9 @@ body {
 .auth-container {
   max-width: 400px;
   width: 100%;
+  margin:auto;
   padding: 20px;
-  background: linear-gradient(to right, #00274D, #005385, #B0C4DE);
+  background: linear-gradient(to right, var(--pale-accent), var(--primary-colour));
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -26,7 +27,7 @@ body {
 
 .auth-title {
   font-size: 2rem;
-  color: #fff;
+  color: var(--text-colour);
   font-family: 'Lobster', cursive;
   margin-bottom: 20px;
 }
@@ -55,8 +56,8 @@ body {
 .auth-form button {
   padding: 10px;
   border: none;
-  border-radius: 4px;
-  background-color: #007bff;
+  border-radius: 8px;
+  background-color: var(--secondary-colour);
   color: #fff;
   font-size: 1rem;
   cursor: pointer;
@@ -64,7 +65,7 @@ body {
 }
 
 .auth-form button:hover {
-  background-color: #0056b3;
+  background-color: var(--accent-colour);
   transform: scale(1.05);
 }
 

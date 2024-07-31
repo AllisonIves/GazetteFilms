@@ -45,14 +45,21 @@ function App() {
             <Route path="/users" element={<UserList />} />
           </Routes>
         </div>
-          <div className="footer">
-          <nav className="navbar navbar-inverse navbar-fixed-bottom">
+        <div className="footer">
+          <nav className="navbar navbar-fixed-bottom">
             <div className="inner-footer">
-            <img id="logo" src={logo}></img>
+              <img id="logo" src={logo}></img>
+            </div>
+            <div className="contact">
             <span className="navbar-text mx-auto">
-              &copy; 2024
-            </span>
-            </div>    
+            &copy; 2024 Gazette Computing Co.
+              </span>
+              <a href="https://github.com/AllisonIves/GazetteFilms/">
+              <span className="navbar-text mx-auto">
+                View on Github
+              </span>
+              </a>
+            </div>
             </nav>
             </div>
       </div>

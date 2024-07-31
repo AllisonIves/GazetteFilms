@@ -15,9 +15,14 @@
   display: flex;
   width: 100vh;
   flex-direction: column;
-  flex: 1;
   color: var(--text-colour);
+  min-height: 100vh;
+  margin-top:8rem;
+  padding-top:3.5rem;
+}
 
+.mainNav{
+  flex: 1;
 }
 
 body {
@@ -26,6 +31,7 @@ body {
   color: var(--text-colour);
   min-height:100%;
   overflow-y: scroll;
+  width: 100%;
 }
 
 /* NavBar and footer styles */
@@ -40,23 +46,33 @@ nav {
 }
 
 .footer nav{
+  width: 100%;
   height: fit-content;
-  background-color: var(--secondary-colour);
   display: flex;
-  font-size: small;
-  bottom: 0;
+  flex-direction: row;
+  background-color: var(--secondary-colour);
+  border-radius: 8px;
 }
 .inner-footer{
-  width: fit-content;
+  width: 30%;
   height:fit-content;
   margin: auto;
   align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 .footer{
-  position:fixed;
-  bottom: 0;
-  right: 0;
   width: 100%;
+}
+
+.contact{
+  width: 70%;
+  height:100%;
+  margin: auto;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: small;
 }
 .navDiv .nav-item {
   padding-left:1.5em;
@@ -85,20 +101,26 @@ nav {
 }
 
 img {
-  width: 80px;
+  width: 120px;
   height: auto;
   margin: auto;
 }
 
 
 /* Homepage styles */
-
-.home-container h1 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
+.homepage{
+  justify-content: center;
+  text-align: center;
 }
 
-.home-container p {
+.homepage h1 {
+  font-size: 2.5rem;
+  color: var(--secondary-colour);
+  font-family: 'Lobster', cursive;
+  margin-bottom:2rem;
+}
+
+.homepage p {
   font-size: 1.2rem;
 }
 
@@ -108,21 +130,29 @@ img {
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  margin: 15px, auto;
+  margin-top:15px;
+  margin-left:auto;
+  margin-right:auto;
   background-color: var(--primary-colour);  
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
+#curate-message{
+  color: #fff;
+}
 #welcomeHeader{
   padding-bottom: 1rem;
   margin-bottom: 1rem;
+}
+#full-list-nav-message{
+  font-size: medium;
+  font-style: italic;
 }
 
 /*My Films styles*/
 .film-list-container{ 
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  flex: 1;
 }
 
 .films-title-card {
@@ -131,6 +161,7 @@ img {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
   position:relative;
+  margin-top:8rem;
 }
 
 .films-title {
@@ -144,9 +175,10 @@ img {
   padding: 0;
 }
 .film-scrollable{
-  max-height: 233px;
+  max-height: 50vh;
   overflow-y: scroll;
   overflow-x: visible;
+  margin-bottom:1rem;
 }
 
 .film-item {
@@ -319,8 +351,8 @@ img {
 /* Users page styling */
 .users-container{ 
   border-radius: 10px;
+  height: 60vh;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  flex: 1;
   margin: auto;
   overflow-y: auto;
 }
@@ -348,4 +380,24 @@ img {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
+}
+.user-rank{
+  font-size: 2.5rem;
+  color: var(--background-colour);
+  font-family: 'Lobster', cursive;
+}
+.user-details {
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+  width:60%;
+  margin:auto;
+}
+.user-details-name{
+  width:fit-content;
+  margin:auto;
+  display:flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: center;
 }
