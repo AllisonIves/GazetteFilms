@@ -51,7 +51,7 @@ const Home = () => {
       <div id="topFilm">
         {highestRatedFilm ? (
           <div className="film-details">
-            <p className="film-name">Name: {highestRatedFilm.name}</p>
+            <p className="film-name">{highestRatedFilm.name}</p>
             <p className="film-stars">Rating: {highestRatedFilm.stars} stars</p>
           </div>
         ) : (

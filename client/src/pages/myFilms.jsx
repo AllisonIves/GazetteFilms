@@ -203,17 +203,8 @@ const MovieList = () => {
               </div>
               <div className="form-row">
                 <div>
-                  <label>Genre:</label>
-                  <select name="genre" value={editForm.genre} onChange={handleEditChange}>
-                    <option value="Action">Action</option>
-                    <option value="Comedy">Comedy</option>
-                    <option value="Drama">Drama</option>
-                    <option value="Horror">Horror</option>
-                    <option value="Romance">Romance</option>
-                    <option value="Sci-Fi">Sci-Fi</option>
-                    <option value="Thriller">Thriller</option>
-                    <option value="Documentary">Documentary</option>
-                  </select>
+                <label>Genre:</label>
+                <input type="text" name="genre" value={editForm.genre} onChange={handleEditChange} />
                 </div>
                 <div>
                   <label>Rating (out of 5 stars):</label>
