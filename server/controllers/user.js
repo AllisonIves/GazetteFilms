@@ -20,7 +20,7 @@ exports.register = async(req, res) => {
 exports.login = async (req, res) => {
     try {
         const { email, password} = req.body;
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ email: new RegExp(`^${email}$`, 'i') });  //use regEx to make email not case sensitive
         if(!user) 
             return res.status(400).json({ message: 'User not found' });
 

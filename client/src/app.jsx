@@ -28,7 +28,9 @@ function App() {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
     setUser(null);
+    window.location.href = '/'; //redirect to home page upon logout
   };
+
 
   return (
     <Router>
