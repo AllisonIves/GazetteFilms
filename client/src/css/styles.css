@@ -175,9 +175,11 @@ img {
 }
 .film-scrollable{
   max-height: 50vh;
+  min-height: 50vh;
   overflow-y: scroll;
   overflow-x: visible;
   margin-bottom:1rem;
+  scrollbar-color: var(--accent-colour) var(--background-colour) ;
 }
 
 .film-item {
@@ -353,6 +355,7 @@ img {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   margin: auto;
   overflow-y: auto;
+  scrollbar-color: var(--accent-colour) var(--background-colour) ;
 }
 
 .users-title-card {
@@ -378,6 +381,7 @@ img {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
+  margin-right: 8px;
 }
 .user-rank{
   font-size: 2.5rem;
@@ -399,3 +403,4 @@ img {
   gap: 5px;
   text-align: center;
 }
+
